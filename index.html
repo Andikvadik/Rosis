@@ -16,9 +16,15 @@
             text-align: center;
         }
         #roses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
             margin-top: 20px;
-            font-size: 2rem;
-            white-space: pre-wrap;
+        }
+        img {
+            width: 50px; /* Розмір гіфки */
+            height: 50px;
         }
         button {
             font-size: 1.5rem;
@@ -35,15 +41,19 @@
     </style>
 </head>
 <body>
-    <button onclick="startPrinting()">Клац🌹</button>
+    <button onclick="startPrinting()">Додати троянди 🌹</button>
     <div id="roses"></div>
 
     <script>
         function startPrinting() {
             let count = 0;
+            let container = document.getElementById("roses");
             let interval = setInterval(() => {
                 if (count < 101) {
-                    document.getElementById("roses").innerHTML += "🌹 ";
+                    let img = document.createElement("img");
+                    img.src = "https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif"; // Посилання на гіфку
+                    img.alt = "Троянда";
+                    container.appendChild(img);
                     count++;
                 } else {
                     clearInterval(interval);
