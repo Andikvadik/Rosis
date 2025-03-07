@@ -7,19 +7,48 @@
     <style>
         body {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             background-color: #ffe6e6;
             font-size: 2rem;
+            text-align: center;
+        }
+        #roses {
+            margin-top: 20px;
+            font-size: 2rem;
+            white-space: pre-wrap;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #e60000;
         }
     </style>
 </head>
 <body>
+    <button onclick="startPrinting()">Клац🌹</button>
+    <div id="roses"></div>
+
     <script>
-        for (let i = 0; i < 101; i++) {
-            document.body.innerHTML += '🌹 ';
+        function startPrinting() {
+            let count = 0;
+            let interval = setInterval(() => {
+                if (count < 101) {
+                    document.getElementById("roses").innerHTML += "🌹 ";
+                    count++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 100); // Додає троянду кожні 100 мс
         }
     </script>
 </body>
